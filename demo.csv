@@ -1,3 +1,5 @@
-VM_Name,vCPU,RAM_MB,Disk
-evl2400123,4,16384,40
-evl2400456,8,49152,80
+VM_Name,vCPU,RAM_MB,Disk,ami
+ev-awsl2-123,4,16384,40,ami-0b5eea76982371e91
+ev-awsl2-234,8,16384,80,ami-0b5eea76982371e91
+ev-rhel9-345,8,16384,80,ami-08e637cea2f053dfa
+ev-win22-456,8,16384,80,ami-0c62b42b7d36e2b2b
