@@ -8,17 +8,18 @@ terraform {
 }
 
 # Configure the AWS Provider
-provider "aws" {
-  region     = "us-east-1"
-  access_key = "AKIAUV6MNXUORENLWTAU"
-  secret_key = "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"
-}
+#provider "aws" {
+#  region     = "us-east-1"
+#  access_key = "pasteaccesskeyhere"
+#  secret_key = "pastesecretkeyhere"
+#}
 
 # Create a VPC
 resource "aws_vpc" "example" {
   cidr_block = "10.0.0.0/16"
 }
 
+# Use the .csv file as input into creating VMs
 locals {
   instances = csvdecode(file("./demo.csv"))
 }
