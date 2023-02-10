@@ -15,8 +15,23 @@ terraform {
 #}
 
 # Create a VPC
-resource "aws_vpc" "example" {
+resource "aws_vpc" "some_custom_vpc" {
   cidr_block = "10.0.0.0/16"
+
+  tags = {
+    Name = "HelloWorldCustomVPC"
+  }
+}
+
+# Create a private subnet
+resource "aws_subnet" "migration_private_subnet" {
+  vpc_id            = aws_vpc.some_custom_vpc.id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = "1a"
+
+  tags = {
+    Name = "HelloWorldPrivateSubnet"
+  }
 }
 
 # Use the .csv file as input into creating VMs
@@ -49,6 +64,7 @@ resource "aws_instance" "vm" {
   ami           = each.value.ami
   instance_type = "t3.micro"
 
+  subnet_id = aws_subnet.migration_private_subnet.id
   tags = {
     Name = "HelloWorld"
   }
