@@ -45,7 +45,7 @@ resource "aws_instance" "vm" {
   for_each = { for inst in local.instances : inst.VM_Name => inst }
 
 #  ami           = data.aws_ami.ubuntu.id
-  cpu_core_count = each.value.vCPU
+#  cpu_core_count = each.value.vCPU
   ami           = each.value.ami
   instance_type = "t3.micro"
 
