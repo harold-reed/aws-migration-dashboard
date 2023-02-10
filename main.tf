@@ -27,7 +27,7 @@ resource "aws_vpc" "some_custom_vpc" {
 resource "aws_subnet" "migration_private_subnet" {
   vpc_id            = aws_vpc.some_custom_vpc.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "1a"
+  availability_zone = "us-east-1a"
 
   tags = {
     Name = "HelloWorldPrivateSubnet"
